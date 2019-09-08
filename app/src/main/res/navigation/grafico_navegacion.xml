@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/grafico_navegacion"
+    app:startDestination="@id/logo">
+
+    <fragment
+        android:id="@+id/logo"
+        android:name="com.amuyu.melitos.ui.logo.Logo"
+        android:label="fragment_logo"
+        tools:layout="@layout/fragment_logo" >
+        <action
+            android:id="@+id/action_logo_to_login"
+            app:destination="@id/f_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/f_login"
+        android:name="com.amuyu.melitos.ui.login.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_menuActivity"
+            app:destination="@id/menuActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/register"
+        android:name="com.amuyu.melitos.ui.register.Register"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_register_to_menuActivity"
+            app:destination="@id/menuActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/menuActivity"
+        android:name="com.amuyu.melitos.MenuActivity"
+        android:label="activity_menu"
+        tools:layout="@layout/activity_menu" />
+</navigation>
