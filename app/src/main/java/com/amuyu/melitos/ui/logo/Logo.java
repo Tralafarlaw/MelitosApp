@@ -17,6 +17,7 @@ import com.amuyu.melitos.R;
 import com.amuyu.melitos.ui.login.Login;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -25,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class Logo extends Fragment {
 
-
+    FirebaseAuth auth = FirebaseAuth.getInstance();
     public Logo() {
         // Required empty public constructor
     }
@@ -40,7 +41,8 @@ public class Logo extends Fragment {
         new Handler().postDelayed(new Runnable(){
             public void run(){
                 // Cuando pasen los 3 segundos, pasamos a la actividad principal de la aplicación
-                FirebaseAuth auth = FirebaseAuth.getInstance();
+                //FirebaseApp.initializeApp(getContext());
+
                 GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
                 if (auth.getCurrentUser() != null || account!=null){
                     NavHostFragment.findNavController(Logo.this).navigate(R.id.menuActivity, null);

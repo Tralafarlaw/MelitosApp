@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:636857968518:android:965c50bc0777c47d",
+        "mobilesdk_app_id": "1:636857968518:android:3109f95a05cbdf8d89ae07",
         "android_client_info": {
           "package_name": "com.amuyu.melitos"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "636857968518-e8jiguh6k719ldd7gf4aldfipmn38edi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.amuyu.melitos",
-            "certificate_hash": "2601072f21ee383acf5abf6cbea420fcd6a53202"
-          }
-        },
         {
           "client_id": "636857968518-dtn8rjnj259lc9s1e1gm85c42br9s3ed.apps.googleusercontent.com",
           "client_type": 1,
