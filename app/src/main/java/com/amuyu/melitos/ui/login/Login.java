@@ -112,7 +112,7 @@ public class Login extends Fragment implements View.OnClickListener, OnSuccessLi
         fUSer.setEnabled(false);
         fPass.setEnabled(false);
         if(!Mail.equals("") && !Pass.equals("")) {
-            auth.createUserWithEmailAndPassword(Mail, Pass).addOnSuccessListener(getActivity(), this).addOnFailureListener(getActivity(), this);
+            auth.createUserWithEmailAndPassword(Mail, Pass).addOnSuccessListener(this).addOnFailureListener(getActivity(), this);
         }
 
 

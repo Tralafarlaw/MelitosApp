@@ -27,4 +27,8 @@ public class MenuActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }
