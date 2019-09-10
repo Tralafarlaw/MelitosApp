@@ -43,5 +43,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.4'
     implementation 'com.facebook.android:facebook-login:[5,6)'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    implementation 'com.lucasurbas:listitemview:1.1.1'
+    implementation 'com.github.andremion:counterfab:1.1.0'
 }
 apply plugin: 'com.google.gms.google-services'

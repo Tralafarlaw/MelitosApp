@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_logo_to_login"
             app:destination="@id/f_login" />
+        <action
+            android:id="@+id/action_logo_to_menuActivity"
+            app:destination="@id/menuActivity" />
     </fragment>
     <fragment
         android:id="@+id/f_login"
