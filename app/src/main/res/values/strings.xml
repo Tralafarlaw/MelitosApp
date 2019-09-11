@@ -29,7 +29,10 @@
     <string name="error_weak_pass">Contraseña demasiado debil</string>
     <string name="error_wrong_pass">Error contraseña incorrecta</string>
     <string name="error_suspended_account">Error su cuenta fue suspendida temporalmente</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <!--bottom sheet-->
+    <string name="title_home">Balance</string>
+    <string name="title_dashboard">Empleados</string>
+    <string name="title_notifications">Inventario</string>
+    <string name="title_settings">Ajustes</string>
+    <string name="title_sales">Vender</string>
 </resources>
