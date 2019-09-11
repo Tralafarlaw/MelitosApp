@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Design.NoActionBar">
@@ -7,7 +7,12 @@
         <item name="colorPrimaryDark">@color/md_cyan_700</item>
         <item name="colorAccent">@color/md_blue_500</item>
         <item name="android:fontFamily">@font/ubuntu_medium</item>
-    </style>
 
+        <item name="buttonStyle">@style/ButtonSelfStile</item>
+    </style>
+    <style name="ButtonSelfStile" parent="android:Widget.Material.Button">
+        <!--item name="android:buttonCornerRadius" tools:targetApi="p">30dp</item-->
+        <item name="android:background">@drawable/round_shape</item>
+    </style>
 
 </resources>

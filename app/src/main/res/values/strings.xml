@@ -13,6 +13,7 @@
     <string name="action_settings">Settings</string>
     <string name="facebook_app_id">[APP_ID]</string>
     <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+    <string name="loading">Cargando...</string>
 
 
     <string name="menu_home">Home</string>
@@ -35,4 +36,11 @@
     <string name="title_notifications">Inventario</string>
     <string name="title_settings">Ajustes</string>
     <string name="title_sales">Vender</string>
+    <!-- Dialog PRoduct -->
+    <string name="stock">Stock</string>
+    <string name="category">Categoria</string>
+    <string name="price">Precio Unitario</string>
+    <string name="price_buy">Precio de adquisicion</string>
+    <string name="img_desc">Foto del producto</string>
+
 </resources>
