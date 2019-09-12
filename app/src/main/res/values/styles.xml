@@ -1,13 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.Design.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/ubuntu_medium</item>
         <item name="buttonStyle">@style/ButtonSelfStile</item>
+
     </style>
     <style name="ButtonSelfStile" parent="android:Widget.Material.Button">
         <!--item name="android:buttonCornerRadius" tools:targetApi="p">30dp</item-->
