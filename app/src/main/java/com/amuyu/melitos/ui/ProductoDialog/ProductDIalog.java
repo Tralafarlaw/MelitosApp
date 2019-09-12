@@ -1,5 +1,6 @@
 package com.amuyu.melitos.ui.ProductoDialog;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -14,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.amuyu.melitos.R;
 
-public class ProductDIalog extends Fragment {
+public class ProductDIalog extends DialogFragment {
 
     private ProductDialogViewModel mViewModel;
 
@@ -22,6 +23,10 @@ public class ProductDIalog extends Fragment {
         return new ProductDIalog();
     }
 
+    public ProductDIalog getInstance(){
+        ProductDIalog a = new ProductDIalog();
+        return a;
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
