@@ -3,11 +3,10 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Design.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/md_cyan_500</item>
-        <item name="colorPrimaryDark">@color/md_cyan_700</item>
-        <item name="colorAccent">@color/md_blue_500</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/ubuntu_medium</item>
-
         <item name="buttonStyle">@style/ButtonSelfStile</item>
     </style>
     <style name="ButtonSelfStile" parent="android:Widget.Material.Button">

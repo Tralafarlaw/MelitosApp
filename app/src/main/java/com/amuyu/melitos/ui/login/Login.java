@@ -39,6 +39,8 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import java.util.concurrent.Executor;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class Login extends Fragment implements View.OnClickListener, OnSuccessListener<AuthResult>, OnFailureListener {
     SignInButton google_btn;
     Button regular_btn;
@@ -101,18 +103,28 @@ public class Login extends Fragment implements View.OnClickListener, OnSuccessLi
             handleSignInResult(task);
         }
     }
-
+    SweetAlertDialog pDialog;
     private void RSignin (){
 
         auth = FirebaseAuth.getInstance();
         Mail = fUSer.getText().toString();
-        Pass = fPass.getText().toString();
-        lUser.setErrorEnabled(false);
-        lPass.setErrorEnabled(false);
-        fUSer.setEnabled(false);
-        fPass.setEnabled(false);
+        Pass = fUSer.getText().toString();
+
+        pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.colorAccent ));
+        pDialog.setTitleText(getString(R.string.loading));
+        pDialog.setCancelable(false);
+        pDialog.show();
         if(!Mail.equals("") && !Pass.equals("")) {
             auth.createUserWithEmailAndPassword(Mail, Pass).addOnSuccessListener(this).addOnFailureListener(getActivity(), this);
+        }else {
+            if(Pass.equals("")) {
+                lPass.setError(getText(R.string.empty_field));
+            }
+            if(Mail.equals("")){
+                lUser.setError(getText(R.string.empty_field));
+            }
+            pDialog.dismissWithAnimation();
         }
 
 
@@ -127,6 +139,7 @@ public class Login extends Fragment implements View.OnClickListener, OnSuccessLi
 
     @Override
     public void onFailure(@NonNull Exception e) {
+
         if(e instanceof FirebaseAuthUserCollisionException){
             auth.signInWithEmailAndPassword(Mail, Pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
@@ -136,24 +149,24 @@ public class Login extends Fragment implements View.OnClickListener, OnSuccessLi
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    fUSer.setEnabled(true);
-                    fPass.setEnabled(true);
+                    lUser.setEnabled(true);
+                    lPass.setEnabled(true);
                     if(e instanceof FirebaseAuthInvalidUserException){
                         Toast.makeText(getContext(),R.string.error_suspended_account , Toast.LENGTH_LONG).show();
                     }
                     if(e instanceof FirebaseAuthInvalidCredentialsException){
-                        fPass.setError(getText(R.string.error_wrong_pass));
+                        lPass.setError(getText(R.string.error_wrong_pass));
                     }
                 }
             });
         }else {
-            fUSer.setEnabled(true);
-            fPass.setEnabled(true);
+            pDialog.dismissWithAnimation();
+
             if(e instanceof FirebaseAuthWeakPasswordException){
-                fPass.setError(getText(R.string.error_weak_pass));
+                lPass.setError(getText(R.string.error_weak_pass));
             }
             if(e instanceof FirebaseAuthInvalidCredentialsException){
-                fUSer.setError(getText(R.string.error_mail));
+                lUser.setError(getText(R.string.error_mail));
             }
 
         }
@@ -161,6 +174,7 @@ public class Login extends Fragment implements View.OnClickListener, OnSuccessLi
 
     @Override
     public void onSuccess(AuthResult authResult) {
+        pDialog.dismissWithAnimation();
         NavHostFragment.findNavController(this).navigate(R.id.menuActivity);
 
     }

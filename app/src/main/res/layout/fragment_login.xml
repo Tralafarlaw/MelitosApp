@@ -9,6 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
@@ -28,6 +29,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_user_l"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -50,6 +52,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_pass_l"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -81,6 +84,8 @@
                     android:layout_marginBottom="16dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:text="@string/login_or_reg"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

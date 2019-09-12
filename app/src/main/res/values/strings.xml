@@ -26,6 +26,7 @@
     <string name="login_or_reg">Iniciar Sesión o Registrarse</string>
     <string name="mail">Correo Electronico</string>
     <string name="pass">Contraseña</string>
+    <string name="empty_field">Este campo no puede estar vacio</string>
     <string name="error_mail">Porfavor inserte un correo valido</string>
     <string name="error_weak_pass">Contraseña demasiado debil</string>
     <string name="error_wrong_pass">Error contraseña incorrecta</string>
