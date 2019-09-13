@@ -35,6 +35,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyVH> 
 
     @Override
     public void onBindViewHolder(@NonNull MyVH h, int position) {
+
+        h.ImageText.setText(CONSTANTES.TEST_INV[position]);
         h.Nombre.setText(CONSTANTES.TEST_INV[position]);
         h.Stock.setText(CONSTANTES.TEST_INV[position]);
         h.Precio.setText(CONSTANTES.TEST_INV[position]);
@@ -53,10 +55,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyVH> 
     }
 
     class MyVH extends RecyclerView.ViewHolder {
-        TextView Nombre, Precio, Stock;
+        TextView Nombre, Precio, Stock, ImageText;
         View mRoot;
         public MyVH(@NonNull View itemView) {
             super(itemView);
+            ImageText = itemView.findViewById(R.id.item_image_text);
             Nombre = itemView.findViewById(R.id.item_product_title);
             Precio = itemView.findViewById(R.id.item_product_price);
             Stock = itemView.findViewById(R.id.item_product_stock);
