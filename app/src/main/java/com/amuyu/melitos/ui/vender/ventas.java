@@ -1,5 +1,6 @@
 package com.amuyu.melitos.ui.vender;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Activity;
@@ -11,10 +12,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -24,20 +31,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amuyu.melitos.Adapters.VentasAdapter;
 import com.amuyu.melitos.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.amuyu.melitos.Adapters.VentasAdapter.SPAN_COUNT_ONE;
+import static com.amuyu.melitos.Adapters.VentasAdapter.SPAN_COUNT_THREE;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class ventas extends Fragment {
 
     private VentasViewModel mViewModel;
-    Button btnLookup;
-    List<Item> items;
-    ListView listView;
-    ItemsListAdapter myItemsListAdapter;
+    private RecyclerView recyclerView;
+    private VentasAdapter itemAdapter;
+    private GridLayoutManager gridLayoutManager;
+    private List<VentasItem> items;
 
     public static ventas newInstance() {
         return new ventas();
@@ -46,6 +56,7 @@ public class ventas extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
 
         return inflater.inflate(R.layout.ventas_fragment, container, false);
     }
@@ -55,184 +66,63 @@ public class ventas extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(VentasViewModel.class);
         // TODO: Use the ViewModel
-        listView = (ListView)getView().findViewById(R.id.listview);
-        btnLookup = (Button)getView().findViewById(R.id.lookup);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        initItems();
-        myItemsListAdapter = new ItemsListAdapter(getActivity(), items);
-        listView.setAdapter(myItemsListAdapter);
+        initItemsData();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        gridLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT_ONE);
+        itemAdapter = new VentasAdapter(items, gridLayoutManager);
+        recyclerView = (RecyclerView) getActivity().findViewById(R.id.rv);
+        recyclerView.setAdapter(itemAdapter);
+        recyclerView.setLayoutManager(gridLayoutManager);
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(getActivity(),
-                        ((Item)(parent.getItemAtPosition(position))).ItemString,
-                        Toast.LENGTH_LONG).show();
-            }});
 
-        btnLookup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String str = "Check items:\n";
-
-                for (int i=0; i<items.size(); i++){
-                    if (items.get(i).isChecked()){
-                        str += i + "\n";
-                    }
-                }
-
-                /*
-                int cnt = myItemsListAdapter.getCount();
-                for (int i=0; i<cnt; i++){
-                    if(myItemsListAdapter.isChecked(i)){
-                        str += i + "\n";
-                    }
-                }
-                */
-
-                Toast.makeText(getActivity(),
-                        str,
-                        Toast.LENGTH_LONG).show();
-
-            }
-        });
+    }
+    private void initItemsData() {
+        items = new ArrayList<>(4);
+        items.add(new VentasItem(R.drawable.ic_account_balance_black_24dp, "Image 1", 20));
+        items.add(new VentasItem(R.drawable.ic_add_black_24dp, "Image 2", 10));
+        items.add(new VentasItem(R.drawable.com_facebook_auth_dialog_background, "Image 3", 27));
+        items.add(new VentasItem(R.drawable.com_facebook_auth_dialog_header_background, "Image 4", 45));
     }
 
-    public class Item {
-        boolean checked;
-        Drawable ItemDrawable;
-        String ItemString;
-        String ItemPrice;
-        Item(Drawable drawable, String t, String p, boolean b){
-            ItemDrawable = drawable;
-            ItemString = t;
-            checked = b;
-            ItemPrice = p;
-        }
 
-        public boolean isChecked(){
-            return checked;
-        }
-    }
-
-    static class ViewHolder {
-        CheckBox checkBox;
-        ImageView icon;
-        TextView text, text2;
-    }
-
-    public class ItemsListAdapter extends BaseAdapter {
-
-        private Context context;
-        private List<Item> list;
-
-        ItemsListAdapter(Context c, List<Item> l) {
-            context = c;
-            list = l;
-        }
-
-        @Override
-        public int getCount() {
-            return list.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return list.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        public boolean isChecked(int position) {
-            return list.get(position).checked;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            View rowView = convertView;
-
-            // reuse views
-            ViewHolder viewHolder = new ViewHolder();
-            if (rowView == null) {
-                LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-                rowView = inflater.inflate(R.layout.vender_item, null);
-
-                viewHolder.checkBox = (CheckBox) rowView.findViewById(R.id.rowCheckBox);
-                viewHolder.icon = (ImageView) rowView.findViewById(R.id.rowImageView);
-                viewHolder.text = (TextView) rowView.findViewById(R.id.rowTextView);
-                viewHolder.text2 = (TextView) rowView.findViewById(R.id.rowTextView2);
-                rowView.setTag(viewHolder);
-            } else {
-                viewHolder = (ViewHolder) rowView.getTag();
-            }
-
-            viewHolder.icon.setImageDrawable(list.get(position).ItemDrawable);
-            viewHolder.checkBox.setChecked(list.get(position).checked);
-
-            final String itemStr = list.get(position).ItemString;
-            viewHolder.text.setText(itemStr);
-
-            final String itemPrc = list.get(position).ItemPrice;
-            viewHolder.text2.setText(itemPrc);
-
-            viewHolder.checkBox.setTag(position);
-
-            /*
-            viewHolder.checkBox.setOnCheckedChangeListener(
-                    new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    list.get(position).checked = b;
-
-                    Toast.makeText(getApplicationContext(),
-                            itemStr + "onCheckedChanged\nchecked: " + b,
-                            Toast.LENGTH_LONG).show();
-                }
-            });
-            */
-
-            viewHolder.checkBox.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    boolean newState = !list.get(position).isChecked();
-                    list.get(position).checked = newState;
-//                    Toast.makeText(getActivity(),
-//                            itemStr + "setOnClickListener\nchecked: " + newState,
-//                            Toast.LENGTH_LONG).show();
-                }
-            });
-
-            viewHolder.checkBox.setChecked(isChecked(position));
-
-            return rowView;
-        }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_switch_layout, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
 
 
-    private void initItems(){
-        items = new ArrayList<Item>();
 
-        TypedArray arrayDrawable = getResources().obtainTypedArray(R.array.resicon);
-        TypedArray arrayText = getResources().obtainTypedArray(R.array.restext);
-        TypedArray arrayPrice = getResources().obtainTypedArray(R.array.resPrice);
-
-        for(int i=0; i<arrayDrawable.length(); i++){
-            Drawable d = arrayDrawable.getDrawable(i);
-            String s = arrayText.getString(i);
-            String p = arrayPrice.getString(i);
-            boolean b = false;
-            Item item = new Item(d, s, p, b);
-            items.add(item);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_switch_layout) {
+            switchLayout();
+            switchIcon(item);
+            return true;
         }
-
-        arrayDrawable.recycle();
-        arrayText.recycle();
+        return super.onOptionsItemSelected(item);
     }
+
+    private void switchLayout() {
+        if (gridLayoutManager.getSpanCount() == SPAN_COUNT_ONE) {
+            gridLayoutManager.setSpanCount(SPAN_COUNT_THREE);
+        } else {
+            gridLayoutManager.setSpanCount(SPAN_COUNT_ONE);
+        }
+        itemAdapter.notifyItemRangeChanged(0, itemAdapter.getItemCount());
+    }
+
+    private void switchIcon(MenuItem item) {
+        if (gridLayoutManager.getSpanCount() == SPAN_COUNT_THREE) {
+            item.setIcon(getResources().getDrawable(R.drawable.ic_span_3));
+        } else {
+            item.setIcon(getResources().getDrawable(R.drawable.ic_span_1));
+        }
+    }
+
+
 
 }
