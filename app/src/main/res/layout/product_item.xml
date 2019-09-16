@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
-    android:orientation="vertical">
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:background="@drawable/editable_rectangle">
 
     <ImageView
         android:id="@+id/item_product_img"
@@ -34,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:text="TextView"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/item_product_img"

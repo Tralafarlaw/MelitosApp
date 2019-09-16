@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    android:background="@drawable/editable_rectangle">
 
     <CheckBox
         android:id="@+id/rowCheckBox"
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="16dp"
         android:text="text"
         app:layout_constraintStart_toEndOf="@+id/rowImageView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,5 +50,16 @@
         app:layout_constraintStart_toEndOf="@+id/rowImageView"
         app:layout_constraintTop_toBottomOf="@+id/rowTextView"
         app:layout_constraintVertical_bias="0.133" />
+
+    <TextView
+        android:id="@+id/rowTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="16dp"
+        android:text="1000 Bs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
