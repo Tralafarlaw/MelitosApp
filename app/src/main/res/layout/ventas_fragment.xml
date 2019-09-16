@@ -7,35 +7,98 @@
     android:orientation="vertical"
     tools:context=".ui.vender.ventas">
 
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <com.google.android.material.tabs.TabItem
+            android:text="Prueba1"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+        <com.google.android.material.tabs.TabItem
+            android:text="Prueba2"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
+        <com.google.android.material.tabs.TabItem
+            android:text="Prueba3"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
     <SearchView
         android:id="@+id/VsearchView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tabs" />
 
     <Button
         android:id="@+id/lookup"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/corner_button"
         android:text="Carrito !"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/multiplicador"
+        android:layout_width="42dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/transparent_button2"
+        android:text="1 X"
+        android:textColor="@color/md_black_1000"
+        app:layout_constraintBottom_toTopOf="@+id/rv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabs" />
+
+    <Button
+        android:id="@+id/barras"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/ic_barcode_scanner"
+        android:textColor="@color/md_black_1000"
+        app:layout_constraintBottom_toTopOf="@+id/rv"
+        app:layout_constraintEnd_toStartOf="@+id/multiplicador"
+        app:layout_constraintTop_toBottomOf="@+id/tabs" />
+
+    <Button
+        android:id="@+id/noRegistrado"
+        android:layout_width="42dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/transparent_button2"
+        android:text="Producto \n no registrado"
+        android:textColor="@color/md_black_1000"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toTopOf="@+id/rv"
+        app:layout_constraintEnd_toStartOf="@+id/barras"
+        app:layout_constraintTop_toBottomOf="@+id/tabs" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/lookup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VsearchView">
+        app:layout_constraintTop_toBottomOf="@+id/VsearchView"
+        app:layout_constraintVertical_bias="1.0">
 
     </androidx.recyclerview.widget.RecyclerView>
 
