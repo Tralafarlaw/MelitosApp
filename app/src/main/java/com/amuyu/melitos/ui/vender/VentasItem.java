@@ -1,17 +1,21 @@
 package com.amuyu.melitos.ui.vender;
 
+import com.amuyu.melitos.C;
+
+import java.util.Map;
+
 public class VentasItem {
-    private int imgResId;
+    private String imgResId;
     private String title;
     private int price;
 
-    public VentasItem(int imgResId, String title, int price) {
-        this.imgResId = imgResId;
-        this.title = title;
-        this.price = price;
+    public VentasItem (Map<String, Object> data){
+        this.imgResId = (String) data.get(C.cPURi);
+        this.title = (String) data.get(C.cPName);
+        this.price = (Integer) data.get(C.cPPrice);
     }
 
-    public int getImgResId() {
+    public String getImgResId() {
         return imgResId;
     }
 

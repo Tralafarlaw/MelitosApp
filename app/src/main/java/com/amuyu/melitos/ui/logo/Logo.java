@@ -1,7 +1,6 @@
 package com.amuyu.melitos.ui.logo;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,12 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.amuyu.melitos.CONSTANTES;
+import com.amuyu.melitos.C;
 import com.amuyu.melitos.R;
-import com.amuyu.melitos.ui.login.Login;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -50,7 +47,7 @@ public class Logo extends Fragment {
                     NavHostFragment.findNavController(Logo.this).navigate(R.id.f_login, null);
                 }
             };
-        }, CONSTANTES.DURACION_SPLASH);
+        }, C.DURACION_SPLASH);
         return mRoot;
     }
 

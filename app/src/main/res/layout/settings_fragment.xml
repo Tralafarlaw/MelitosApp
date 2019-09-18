@@ -3,11 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Settings.Settings">
+    tools:context=".ui.Settings.fr_Settings">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text=" wolegrs{eg}" />
+
+    <Button
+        android:id="@+id/logout_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_out" />
 
 </FrameLayout>

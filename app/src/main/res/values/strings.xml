@@ -5,14 +5,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Abrir menu</string>
+    <string name="navigation_drawer_close">Cerrar menu</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="facebook_app_id">[APP_ID]</string>
-    <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="facebook_app_id">673208493158825</string>
+    <string name="fb_login_protocol_scheme">fb673208493158825</string>
     <string name="loading">Cargando...</string>
 
 
@@ -31,6 +31,16 @@
     <string name="error_weak_pass">Contraseña demasiado debil</string>
     <string name="error_wrong_pass">Error contraseña incorrecta</string>
     <string name="error_suspended_account">Error su cuenta fue suspendida temporalmente</string>
+    <string name="forgot_pass">¿Olvido su contraseña?</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="error_wrong_mail">Porfavor verifique su correo</string>
+    <string name="name">Nombre</string>
+    <string name="nick">Nickname (Apodo)</string>
+    <string name="re_pass">Repita contraseña</string>
+    <string name="error_already_exist">Error este correo ya tiene un acuenta registrada</string>
+    <string name="sign_out">Cerrar Sesión</string>
+    <string name="not_same_pass">Las contraseñas no coinciden</string>
     <!--bottom sheet-->
     <string name="title_home">Balance</string>
     <string name="title_dashboard">Empleados</string>
@@ -43,6 +53,8 @@
     <string name="price">Precio Unitario</string>
     <string name="price_buy">Precio de adquisicion</string>
     <string name="img_desc">Foto del producto</string>
+
+    <string name="sales_cart_txt">Carrito !</string>
 
     <array name="resicon">
         <item>@android:drawable/ic_dialog_alert</item>
@@ -87,5 +99,20 @@
         <item>"100bs"</item>
         <item>"152bs"</item>
     </array>
+    <!-- Error db-->
+    <string name="db_error_read">Error al leer la base de datos</string>
+    <!-- Dialog Fragment-->
+    <string name="d_desc">Descripcion</string>
+    <string name="d_stock">Stock</string>
+    <string name="d_min_stock">Stock minimo</string>
+    <string name="d_off">Descuento</string>
+    <string name="d_max_off">Descuento máximo</string>
+    <string name="d_code">Codigo</string>
+    <string name="buy">Precio de compra</string>
+    <string name="sell">Precio de venta</string>
+    <string name="cancel">Cancelar</string>
+    <string name="agre">Aceptar</string>
+    <string name="bar_code">Codigo de barras</string>
+    <string name="d_title">Nuevo producto</string>
 
 </resources>

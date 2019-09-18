@@ -1,8 +1,6 @@
 package com.amuyu.melitos.ui.login;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,15 +8,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.amuyu.melitos.CONSTANTES;
-import com.amuyu.melitos.MainActivity;
+import com.amuyu.melitos.C;
 import com.amuyu.melitos.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -36,8 +32,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-
-import java.util.concurrent.Executor;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -92,13 +86,13 @@ public class Login extends Fragment implements View.OnClickListener, OnSuccessLi
     }
     private void GsignIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, CONSTANTES.RC_SIGN_IN);
+        startActivityForResult(signInIntent, C.RC_SIGN_IN);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == CONSTANTES.RC_SIGN_IN){
+        if(requestCode == C.RC_SIGN_IN){
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
@@ -152,7 +146,7 @@ public class Login extends Fragment implements View.OnClickListener, OnSuccessLi
                     lUser.setEnabled(true);
                     lPass.setEnabled(true);
                     if(e instanceof FirebaseAuthInvalidUserException){
-                        Toast.makeText(getContext(),R.string.error_suspended_account , Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),R.string.error_wrong_mail , Toast.LENGTH_LONG).show();
                     }
                     if(e instanceof FirebaseAuthInvalidCredentialsException){
                         lPass.setError(getText(R.string.error_wrong_pass));

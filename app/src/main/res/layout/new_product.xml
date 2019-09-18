@@ -44,7 +44,7 @@
         app:srcCompat="@drawable/asl_checkbox" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/fr_reg_btn"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="32dp"
@@ -66,7 +66,7 @@
         android:padding="0dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/np_divider"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/fr_reg_btn"
         app:layout_constraintTop_toTopOf="@+id/np_divider"
         app:layout_constraintVertical_bias="0.55"
         app:srcCompat="@drawable/ic_noun_image" />

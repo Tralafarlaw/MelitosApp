@@ -1,7 +1,5 @@
 package com.amuyu.melitos.Adapters;
 
-import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +7,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amuyu.melitos.CONSTANTES;
+import com.amuyu.melitos.C;
 import com.amuyu.melitos.R;
 import com.amuyu.melitos.ui.ProductoDialog.ProductDIalog;
-
-import java.util.zip.Inflater;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyVH> implements View.OnClickListener {
     FragmentManager manager;
@@ -36,21 +29,21 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyVH> 
     @Override
     public void onBindViewHolder(@NonNull MyVH h, int position) {
 
-        h.ImageText.setText(CONSTANTES.TEST_INV[position]);
-        h.Nombre.setText(CONSTANTES.TEST_INV[position]);
-        h.Stock.setText(CONSTANTES.TEST_INV[position]);
-        h.Precio.setText(CONSTANTES.TEST_INV[position]);
+        h.ImageText.setText(C.TEST_INV[position]);
+        h.Nombre.setText(C.TEST_INV[position]);
+        h.Stock.setText(C.TEST_INV[position]);
+        h.Precio.setText(C.TEST_INV[position]);
         h.mRoot.setOnClickListener(this);
     }
 
     @Override
     public int getItemCount() {
-        return CONSTANTES.TEST_INV.length;
+        return C.TEST_INV.length;
     }
 
     @Override
     public void onClick(View view) {
-        DialogFragment dialogFragment = ProductDIalog.newInstance();
+        DialogFragment dialogFragment = ProductDIalog.Companion.newInstance();
         dialogFragment.show(manager, "TAG_DIALOG");
     }
 
