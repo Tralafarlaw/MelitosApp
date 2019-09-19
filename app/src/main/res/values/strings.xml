@@ -114,5 +114,7 @@
     <string name="agre">Aceptar</string>
     <string name="bar_code">Codigo de barras</string>
     <string name="d_title">Nuevo producto</string>
+    <string name="new_cat_name">Nombre de la nueva categoria</string>
+    <string name="new_cat_title">Nueva categoria</string>
 
 </resources>

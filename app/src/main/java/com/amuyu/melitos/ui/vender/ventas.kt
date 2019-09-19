@@ -1,5 +1,6 @@
 package com.amuyu.melitos.ui.vender
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,7 +17,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
+import androidx.core.view.get
 
 import com.amuyu.melitos.Adapters.VentasAdapter
 import com.amuyu.melitos.R
@@ -29,6 +32,8 @@ import com.amuyu.melitos.C
 import com.amuyu.melitos.ui.ProductsViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.ventas_fragment.view.*
+import stream.customalert.CustomAlertDialogue
 
 class ventas : Fragment() {
     val TAG = "VENTAS FRAGMENT TAG"
@@ -36,6 +41,7 @@ class ventas : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var itemAdapter: VentasAdapter
     lateinit var gridLayoutManager: GridLayoutManager
+    lateinit var cart:Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +50,38 @@ class ventas : Fragment() {
         setHasOptionsMenu(true)
 
         val v = inflater.inflate(R.layout.ventas_fragment, container, false)
-        recyclerView = v.findViewById(R.id.rv)
+        recyclerView = v.rv
+        cart = v.lookup
+        cart.setOnClickListener{_->showcart()}
         return v
+    }
+    fun showcart(){
+        var list = arrayListOf<String>()
+        for(aux in itemAdapter.items){
+            if(aux.cv.isChecked){
+                list.add(aux.title.text.toString())
+            }
+        }
+        showdialog(list)
+    }
+    fun showdialog(list: ArrayList<String>){
+        val alert = CustomAlertDialogue.Builder(context)
+            .setStyle(CustomAlertDialogue.Style.ACTIONSHEET)
+            .setTitle("Carrito")
+            .setTitleColor(com.amuyu.melitos.R.color.md_text_white_87)
+            .setCancelText("Aceptar")
+            .setOnCancelClicked(object : CustomAlertDialogue.OnCancelClicked {
+                override fun OnClick(view: View, dialog: Dialog) {
+                    acept(dialog)
+                }
+            })
+            .setOthers(list)
+            .setDecorView(activity?.window?.getDecorView())
+            .build()
+        alert.show()
+    }
+    fun acept(dialog: Dialog){
+        dialog.dismiss()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,6 +91,7 @@ class ventas : Fragment() {
 
         gridLayoutManager = GridLayoutManager(context, SPAN_COUNT_ONE)
         itemAdapter = VentasAdapter(gridLayoutManager!!)
+        itemAdapter.sw =true
         recyclerView.adapter = itemAdapter
         recyclerView.layoutManager = gridLayoutManager
         mViewModel.getUsers().observe(this, Observer { ventasItems ->

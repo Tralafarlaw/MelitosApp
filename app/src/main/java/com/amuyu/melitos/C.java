@@ -38,6 +38,9 @@ public final class C {
     public static final String cPStock = "Stock";
     public static final String sPMinStock = "isMinStock";
     public static final String cPMinStock = "MinStock";
+    public static final String cPMaxoff = "MaxDescuento";
+    public static final String cPOff = "Descuento";
+
 
     public static final String cCategory = "Categoria";
 

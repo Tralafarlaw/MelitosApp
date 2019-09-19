@@ -19,9 +19,8 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.amuyu.melitos.ui.notifications"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.amuyu.melitos_b.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications" />
     <fragment
         android:id="@+id/navigation_sales"
         android:name="com.amuyu.melitos.ui.vender.ventas"
