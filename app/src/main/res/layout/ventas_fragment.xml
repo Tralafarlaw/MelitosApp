@@ -44,9 +44,9 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/corner_button"
+        android:background="@drawable/transparent_corner_button"
         android:text="Carrito !"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -78,7 +78,7 @@
 
     <Button
         android:id="@+id/noRegistrado"
-        android:layout_width="42dp"
+        android:layout_width="54dp"
         android:layout_height="36dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/transparent_button2"
