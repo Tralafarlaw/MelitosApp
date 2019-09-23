@@ -53,7 +53,12 @@ dependencies {
     implementation  'com.fxn769:bubbletabbar:1.0.1'
     implementation 'cn.pedant.sweetalert:library:1.3'
 
+
+    //CAMERA
     implementation 'me.dm7.barcodescanner:zxing:1.9'
+    implementation 'com.github.yalantis:ucrop:2.2.2'
+    implementation 'commons-io:commons-io:2.4'
+
 
     implementation 'com.lucasurbas:listitemview:1.1.1'
     implementation 'com.github.andremion:counterfab:1.1.0'
